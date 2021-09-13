@@ -13,7 +13,7 @@ You can incorporate it into your CI/CD pipeline or you can call it as part of yo
 
 ## Running axe locally
 
-Requirements:
+**Requirements:**
 
 Node v8+ in PATH
 
