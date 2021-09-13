@@ -49,7 +49,7 @@ docker run --rm axe-accessibility-runtime https://ciandt.com
 
 The most important result segment is the "violations" field array. It shows if any tag or html element is violating any accessbility best-practices.
 
-```json
+```javascript
 {
   testEngine: { name: 'axe-core', version: '3.5.6' },
   testRunner: { name: 'axe' },
