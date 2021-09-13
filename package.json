@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/ciandt-taurus-platform/axe-accessibility-runtime#readme",
   "dependencies": {
-    "@axe-core/cli": "^4.2.2",
-    "selenium-webdriver": "^4.0.0-rc-1"
+    "axe-core": "^3.3.1",
+    "puppeteer": "^1.19.0"
   }
 }
