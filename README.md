@@ -1,10 +1,12 @@
-# axe Accessibility Test Runtime
+# AXE Accessibility Test Runtime
 
 This repo utilizes the core funcionatility provided by [Deque/Axe](https://github.com/dequelabs/axe-core) to execute accessibility tests.
 
-It's using the Puppeteer under the hood to create a ChromeDriver instance and running the provided url against a set of rules. More about it [here](https://github.com/dequelabs/axe-core/tree/develop/doc/examples/puppeteer)
+It's using the Puppeteer under the hood to create a ChromeDriver instance and run the provided url against a set of rules. More about it [here](https://github.com/dequelabs/axe-core/tree/develop/doc/examples/puppeteer)
 
-You can incorporate it into your CI/CD pipeline or call it as part of you testing framework.
+You can incorporate it into your CI/CD pipeline or you can call it as part of you testing framework.
+
+(JPM Plugin is a possible future improvement)
 
 
 # Getting-started
