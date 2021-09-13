@@ -1,0 +1,23 @@
+{
+  "name": "axe-accessibility-runtime",
+  "version": "1.0.0",
+  "description": "Contents to execute the axe accessibility tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ciandt-taurus-platform/axe-accessibility-runtime.git"
+  },
+  "author": "ci&t",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ciandt-taurus-platform/axe-accessibility-runtime/issues"
+  },
+  "homepage": "https://github.com/ciandt-taurus-platform/axe-accessibility-runtime#readme",
+  "dependencies": {
+    "@axe-core/cli": "^4.2.2",
+    "selenium-webdriver": "^4.0.0-rc-1"
+  }
+}
