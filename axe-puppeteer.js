@@ -18,7 +18,9 @@ const main = async url => {
   let results;
   try {
     // Setup Puppeteer
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({
+      args: ['--no-sandbox']
+    });
 
     // Get new page
     const page = await browser.newPage();
