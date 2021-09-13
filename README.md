@@ -81,7 +81,9 @@ The most important result segment is the "violations" field array. It shows if a
       help: 'Frames must have title attribute',
       helpUrl: 'https://dequeuniversity.com/rules/axe/3.5/frame-title?application=axeAPI',
       nodes: [Array]
-    },
-    {
+    }
+  ]
+  ...
+}
 
 ```
