@@ -24,6 +24,7 @@ const main = async url => {
 
     // Get new page
     const page = await browser.newPage();
+    await page.setDefaultNavigationTimeout(0);
     await page.goto(url);
 
     // Inject and run axe-core
@@ -54,7 +55,7 @@ const main = async url => {
 
 main(url)
   .then(results => {
-    console.log(results);
+    console.log(JSON.stringify(results));
   })
   .catch(err => {
     console.error('Error running axe-core:', err.message);
