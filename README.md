@@ -120,7 +120,7 @@ Results example:
 
 ```javascript
 {
-  "https://www.hubspot.com/products/operations/programmable-automation\n": {
+  "https://www.hubspot.com/products/operations/programmable-automation": {
     "testEngine": {
       "name": "axe-core",
       "version": "3.5.6"
