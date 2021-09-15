@@ -39,7 +39,7 @@ npm install
 node axe-puppeteer.js https://ciandt.com
 ```
 
-## Runnning on docker
+## Running it on docker
 
 1. Build the docker image
 
