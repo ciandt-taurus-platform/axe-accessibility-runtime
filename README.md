@@ -11,10 +11,10 @@ You can incorporate it into your CI/CD pipeline or you can call it as part of yo
 ## Table of Contents  
 
 <!--ts-->
-*[Runtime](#getting-started)  
-*[Support Execution Scripts](#support-execution-scripts)
-    *[Running a batch test against a list of urls](#running-a-batch-test-against-a-list-of-urls)
-    *[Running it using Jenkinsfile](#running-it-using-a-jenkinsfile)
+- [Getting-started With the Runtime](#getting-started-with-the-runtime)
+- [Support Execution Scripts](#support-execution-scripts)
+  - [Running a batch test against a list of urls](#running-a-batch-test-against-a-list-of-urls)
+  - [Running it using Jenkinsfile](#running-it-using-a-jenkinsfile)
 
 <!--te-->
 
@@ -115,6 +115,51 @@ python3 exec_from_file_list.py -f <inputfile> -i <scanner_docker_image_name>
 ```bash
 python3 exec_from_file_list.py -f tesdata/urls.txt -i axe-accessibility-runtime
 ```
+
+Results example:
+
+```javascript
+{
+  "https://www.hubspot.com/products/operations/programmable-automation\n": {
+    "testEngine": {
+      "name": "axe-core",
+      "version": "3.5.6"
+    },
+    "testRunner": {
+      "name": "axe"
+    },
+    "testEnvironment": {
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/78.0.3882.0 Safari/537.36",
+      "windowWidth": 800,
+      "windowHeight": 600,
+      "orientationAngle": 0,
+      "orientationType": "portrait-primary"
+    },
+    "timestamp": "2021-09-15T14:18:02.876Z",
+    "url": "https://www.hubspot.com/products/operations/programmable-automation",
+    "toolOptions": {
+      "reporter": "v1"
+    },
+    "violations": [
+      {
+        "id": "aria-hidden-focus",
+        "impact": "serious",
+        "tags": [
+          "cat.name-role-value",
+          "wcag2a",
+          "wcag412",
+          "wcag131"
+        ],
+        "description": "Ensures aria-hidden elements do not contain focusable elements",
+        "help": "ARIA hidden element must not contain focusable elements",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/3.5/aria-hidden-focus?application=axeAPI",
+        "nodes": [
+          {
+            "any": [],
+
+
+```
+
 
 ## Running it using a jenkinsfile
 

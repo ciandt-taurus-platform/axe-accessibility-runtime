@@ -57,10 +57,12 @@ def main(argv):
         print(usage_msg)
         sys.exit()
     
-    print ("Input file: ", input_file)
-    print ("Scanner image: ", image_name)
     urls = read_url_list(input_file)
+    urls = [x.replace("\n","") for x in urls if len(x) > 1]
     data = run_analysis_for_list(urls, image_name)
+    data["input_file"] = input_file
+    data["scanner_image"] = image_name
+
     print(json.dumps(data))
 
 if __name__ == "__main__":
