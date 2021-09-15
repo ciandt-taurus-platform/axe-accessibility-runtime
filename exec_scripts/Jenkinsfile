@@ -1,0 +1,12 @@
+//Requirements
+//The python script uses the running docker client to execute the image
+//Therefore, it's mandatory to have a valid docker client with a valid
+//connection to a docker engine
+
+node {
+    git branch: "main", 
+        url: 'https://${ACCESS_KEY}@github.com/ciandt-taurus-platform/axe-accessibility-runtime'
+   
+    sh("pip install -r exec_scripts/requirements.txt")
+    sh("python3 exec_scripts/exec_from_file_list.py -f urls.txt -i axe-accessibility-runtime")
+}

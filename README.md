@@ -8,8 +8,17 @@ You can incorporate it into your CI/CD pipeline or you can call it as part of yo
 
 (JPM Plugin is a possible future improvement)
 
+## Table of Contents  
 
-# Getting-started
+<!--ts-->
+*[Runtime](#getting-started)  
+*[Support Execution Scripts](#support-execution-scripts)
+    *[Running a batch test against a list of urls](#running-a-batch-test-against-a-list-of-urls)
+    *[Running it using Jenkinsfile](#running-it-using-a-jenkinsfile)
+
+<!--te-->
+
+# Getting-started With the Runtime
 
 ## Running axe locally
 
@@ -84,6 +93,42 @@ The most important result segment is the "violations" field array. It shows if a
     }
   ]
   ...
+}
+
+```
+
+# Execution Scripts
+
+Even though it's possible to manually execute the scan (as described in the setions above), it's limited to one url per execution. To be able to scan an entire website with **n** pages, one would need to manually run it **n** times.
+
+To make things more smoothly, there is one folder named **"exec_scripts"** containing some supporting python, bash and jenkins scripts to facilitate the execution and the results aggregation and manipulation.
+
+## Running a batch test against a list of urls
+
+It's possible to execute a batch test and consolidate the results using the **exec_from_file_list.py**. It uses a text file containg a list of urls and iterate over each one of it consolidating the results in a key-value structure url -> result.
+
+```bash
+python3 exec_from_file_list.py -f <inputfile> -i <scanner_docker_image_name>
+```
+
+*Example*:
+```bash
+python3 exec_from_file_list.py -f tesdata/urls.txt -i axe-accessibility-runtime
+```
+
+## Running it using a jenkinsfile
+
+Concatenating the python in a Jenkinsfile allows the execution as a pipeline step.
+It's mandatory the Jenkins executor has access to a docker client in the $PATH. To overcome this requirement it's possible to use the Docker jenkins plugin.
+
+```groovy
+
+node {
+    git branch: "main", 
+        url: 'https://${ACCESS_KEY}@github.com/ciandt-taurus-platform/axe-accessibility-runtime'
+   
+    sh("pip install -r exec_scripts/requirements.txt")
+    sh("python3 exec_scripts/exec_from_file_list.py -f urls.txt -i axe-accessibility-runtime")
 }
 
 ```

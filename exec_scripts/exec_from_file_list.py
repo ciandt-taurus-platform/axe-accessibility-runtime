@@ -1,3 +1,8 @@
+# Requirements
+# The python script uses the running docker client to execute the image
+# Therefore, it's mandatory to have a valid docker client with a valid
+# connection to a docker engine
+
 import docker
 import sys
 import json
