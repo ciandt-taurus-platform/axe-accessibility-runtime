@@ -50,7 +50,7 @@ docker build . -t axe-accessibility-runtime
 2. Execute the docker image passing the url as a parameter
 
 ```bash
-docker run --rm axe-accessibility-runtime https://ciandt.com
+docker run --rm ghcr.io/ciandt-taurus-platform/axe-accessibility-runtime https://ciandt.com
 ```
 
 ## Passing headers to the http call
@@ -63,19 +63,19 @@ Remembering that a [cookie is a header with a special key](https://developer.moz
 **Example: simple basic auth:**
 
 ```bash
-docker run --rm axe-accessibility-runtime https://ciandt.com -H "Authorization: Basic 123"
+docker run --rm ghcr.io/ciandt-taurus-platform/axe-accessibility-runtime https://ciandt.com -H "Authorization: Basic 123"
 ```
 
 **Example: simple cookie with authorization**
 
 ```bash
-docker run --rm axe-accessibility-runtime https://ciandt.com -H "Cookie: jSessionId=123;
+docker run --rm ghcr.io/ciandt-taurus-platform/axe-accessibility-runtime https://ciandt.com -H "Cookie: jSessionId=123;
 ```
 
 **Example: more than one header**
 
 ```bash
-docker run --rm axe-accessibility-runtime https://ciandt.com -H "Accept: application/xml" -H "Cookie: jSessionId=123;
+docker run --rm ghcr.io/ciandt-taurus-platform/axe-accessibility-runtime https://ciandt.com -H "Accept: application/xml" -H "Cookie: jSessionId=123;
 ```
 
 # How to interpret the results
@@ -137,7 +137,7 @@ python3 exec_from_file_list.py -f <inputfile> -i <scanner_docker_image_name>
 
 *Example*:
 ```bash
-python3 exec_from_file_list.py -f tesdata/urls.txt -i axe-accessibility-runtime
+python3 exec_from_file_list.py -f tesdata/urls.txt -i ghcr.io/ciandt-taurus-platform/axe-accessibility-runtime
 ```
 
 Results example:
@@ -197,7 +197,7 @@ node {
         url: 'https://${ACCESS_KEY}@github.com/ciandt-taurus-platform/axe-accessibility-runtime'
    
     sh("pip install -r exec_scripts/requirements.txt")
-    sh("python3 exec_scripts/exec_from_file_list.py -f urls.txt -i axe-accessibility-runtime")
+    sh("python3 exec_scripts/exec_from_file_list.py -f urls.txt -i ghcr.io/ciandt-taurus-platform/axe-accessibility-runtime")
 }
 
 ```
