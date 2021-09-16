@@ -2,6 +2,7 @@ const puppeteer = require('puppeteer');
 const axeCore = require('axe-core');
 const { parse: parseURL } = require('url');
 const assert = require('assert');
+const argParse = require("minimist")
 
 // Cheap URL validation
 const isValidURL = input => {
@@ -9,11 +10,42 @@ const isValidURL = input => {
   return u.protocol && u.host;
 };
 
-// node axe-puppeteer.js <url>
-const url = process.argv[2];
+const parseHeaders = input => {
+    if(typeof input === "undefined") {
+      return {};
+    }
+
+    //parse single header
+    if(typeof input === "string") {
+      return parseHeader(input)
+    }
+
+    //parse array
+    var merged = {};
+    input.map(parseHeader).forEach(element => {
+      for (var attrname in element) { merged[attrname] = element[attrname]; }
+    });
+    
+    return merged
+
+};
+
+const parseHeader = header => {
+  obj = {}
+
+  contents = header.split(":")
+  obj[contents[0]] = contents[1]
+
+  return obj
+}
+
+args = argParse(process.argv.slice(2))
+url = args["_"][0]
 assert(isValidURL(url), 'Invalid URL');
 
-const main = async url => {
+headers = parseHeaders(args["H"])
+
+const main = async (url, headers) => {
   let browser;
   let results;
   try {
@@ -25,6 +57,7 @@ const main = async url => {
     // Get new page
     const page = await browser.newPage();
     await page.setDefaultNavigationTimeout(0);
+    await page.setExtraHTTPHeaders(headers)
     await page.goto(url);
 
     // Inject and run axe-core
@@ -53,7 +86,7 @@ const main = async url => {
   return results;
 };
 
-main(url)
+main(url, headers)
   .then(results => {
     console.log(JSON.stringify(results));
   })

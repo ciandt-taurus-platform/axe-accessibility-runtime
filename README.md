@@ -53,6 +53,30 @@ docker build . -t axe-accessibility-runtime
 docker run --rm axe-accessibility-runtime https://ciandt.com
 ```
 
+## Passing headers to the http call
+
+Some sites require authentication, cookies or any other type of valid header to allow navigation.
+It's possible to pass headers using the cUrl notation **-H "header-key: header-value"**.
+
+Remembering that a [cookie is a header with a special key](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cookie): **-H "Cookie: name=value; name2=value2; name3=value3"**
+
+**Example: simple basic auth:**
+
+```bash
+docker run --rm axe-accessibility-runtime https://ciandt.com -H "Authorization: Basic 123"
+```
+
+**Example: simple cookie with authorization**
+
+```bash
+docker run --rm axe-accessibility-runtime https://ciandt.com -H "Cookie: jSessionId=123;
+```
+
+**Example: more than one header**
+
+```bash
+docker run --rm axe-accessibility-runtime https://ciandt.com -H "Accept: application/xml" -H "Cookie: jSessionId=123;
+```
 
 # How to interpret the results
 
