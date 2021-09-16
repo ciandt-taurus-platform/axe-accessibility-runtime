@@ -41,6 +41,16 @@ node axe-puppeteer.js https://ciandt.com
 
 ## Running it on docker
 
+### Using the oficial image
+
+1. Execute the docker image passing the url as a parameter
+
+```bash
+docker run --rm ghcr.io/ciandt-taurus-platform/axe-accessibility-runtime https://ciandt.com -H "Cache-Control: no-cache"
+```
+
+### Building it locally
+
 1. Build the docker image
 
 ```bash
@@ -50,7 +60,7 @@ docker build . -t axe-accessibility-runtime
 2. Execute the docker image passing the url as a parameter
 
 ```bash
-docker run --rm ghcr.io/ciandt-taurus-platform/axe-accessibility-runtime https://ciandt.com
+docker run --rm axe-accessibility-runtime https://ciandt.com -H "Cache-Control: no-cache"
 ```
 
 ## Passing headers to the http call
