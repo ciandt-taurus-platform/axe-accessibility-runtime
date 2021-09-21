@@ -38,7 +38,7 @@ def main(argv):
     usage_msg = "Usage: python exec_from_file_list.py -f <inputfile> -i <scanner_docker_image_name>"
 
     input_file = ''
-    image_name = "axe-accessibility-runtime"
+    image_name = "ghcr.io/ciandt-taurus-platform/axe-accessibility-runtime"
     try:
         opts, args = getopt.getopt(argv,"hf:i:",["file=","image="])
     except getopt.GetoptError:
