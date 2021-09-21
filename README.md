@@ -142,7 +142,7 @@ To make things more smoothly, there is one folder named **"exec_scripts"** conta
 It's possible to execute a batch test and consolidate the results using the **exec_from_file_list.py**. It uses a text file containg a list of urls and iterate over each one of it consolidating the results in a key-value structure url -> result.
 
 ```bash
-python3 exec_from_file_list.py -f <inputfile> -i <scanner_docker_image_name>
+python3 exec_from_file_list.py -f <inputfile> [-i <scanner_docker_image_name>]
 ```
 
 *Example*:
